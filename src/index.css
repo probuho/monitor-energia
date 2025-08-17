@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilos personalizados para Driver.js */
+.driver-popover {
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.driver-popover-title {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.driver-popover-description {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.driver-popover-footer {
+  border-top: 1px solid #e5e7eb;
+}
+
+.driver-popover-progress-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+}

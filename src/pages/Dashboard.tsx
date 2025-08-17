@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { generarRecomendacion, generarDatosPrueba, ConsumoDiario, Recomendacion } from "../utils/recommendations";
+import Tutorial from "../components/Tutorial";
 
 const Dashboard: React.FC = () => {
   const { usuario, logout, isAuthenticated, loading: authLoading } = useAuth();
@@ -9,6 +10,7 @@ const Dashboard: React.FC = () => {
   const [consumos, setConsumos] = useState<ConsumoDiario[]>([]);
   const [recomendacion, setRecomendacion] = useState<Recomendacion | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showTutorial, setShowTutorial] = useState(false);
 
   // Cargar datos de consumo y generar recomendaciones
   useEffect(() => {
@@ -44,14 +46,15 @@ const Dashboard: React.FC = () => {
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-semibold text-gray-900">
-              Monitor de Energía
-            </h1>
-            <div className="flex items-center space-x-4">
+                      <h1 id="welcome-section" className="text-xl font-semibold text-gray-900">
+            Monitor de Energía
+          </h1>
+            <div id="user-info" className="flex items-center space-x-4">
               <span className="text-gray-700">
                 Bienvenido, {usuario?.nombre}
               </span>
               <button
+                id="logout-button"
                 onClick={handleLogout}
                 className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
               >
@@ -65,9 +68,19 @@ const Dashboard: React.FC = () => {
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0 space-y-6">
           
+          {/* Botón de Tutorial */}
+          <div className="flex justify-center">
+            <button
+              onClick={() => setShowTutorial(true)}
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              🎯 ¿Cómo usar el Dashboard? Ver Tutorial Completo
+            </button>
+          </div>
+          
           {/* Panel de Recomendaciones */}
           {recomendacion && (
-            <div className={`p-6 rounded-lg shadow-lg ${
+            <div id="recommendation-card" className={`p-6 rounded-lg shadow-lg ${
               recomendacion.tipo === "ahorro" ? "bg-red-50 border-l-4 border-red-500" :
               recomendacion.tipo === "excelente" ? "bg-green-50 border-l-4 border-green-500" :
               "bg-blue-50 border-l-4 border-blue-500"
@@ -117,7 +130,7 @@ const Dashboard: React.FC = () => {
           )}
 
           {/* Resumen de Consumo */}
-          <div className="bg-white overflow-hidden shadow rounded-lg">
+          <div id="consumption-summary" className="bg-white overflow-hidden shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
                 Resumen de Consumo (Últimos 14 días)
@@ -145,7 +158,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Gráfico de Consumo */}
-              <div className="border-t pt-4">
+              <div id="consumption-chart" className="border-t pt-4">
                 <h4 className="text-md font-medium text-gray-700 mb-3">Tendencia de Consumo</h4>
                 <div className="h-32 flex items-end space-x-1">
                   {consumos.slice(-7).map((consumo, index) => {
@@ -180,6 +193,12 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </main>
+
+      <Tutorial 
+        isOpen={showTutorial} 
+        onClose={() => setShowTutorial(false)} 
+        tutorialType="dashboard" 
+      />
     </div>
   );
 };
