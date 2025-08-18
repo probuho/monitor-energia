@@ -83,20 +83,52 @@ export function generarDatosPrueba(): ConsumoDiario[] {
   const hoy = new Date();
   const datos: ConsumoDiario[] = [];
   
-  // Generar 14 días de datos con variación realista
-  for (let i = 13; i >= 0; i--) {
+  // Generar 30 días de datos con variación realista y patrones semanales
+  for (let i = 29; i >= 0; i--) {
     const fecha = new Date(hoy);
     fecha.setDate(hoy.getDate() - i);
     
-    // Consumo base con variación diaria
-    const consumoBase = 12; // kWh promedio
-    const variacion = (Math.random() - 0.5) * 4; // 2 kWh
-    const consumo = Math.max(8, Math.min(16, consumoBase + variacion));
+    // Patrón semanal: más consumo en fines de semana
+    const diaSemana = fecha.getDay();
+    const esFinDeSemana = diaSemana === 0 || diaSemana === 6;
+    
+    // Consumo base con variación diaria y semanal
+    let consumoBase = 15; // kWh base
+    
+    // Ajustar por día de la semana
+    if (esFinDeSemana) {
+      consumoBase += 3; // Más consumo en fines de semana
+    } else if (diaSemana === 1) { // Lunes
+      consumoBase += 1; // Ligero aumento
+    } else if (diaSemana === 5) { // Viernes
+      consumoBase += 2; // Preparación para el fin de semana
+    }
+    
+    // Variación aleatoria diaria
+    const variacion = (Math.random() - 0.5) * 6; // ±3 kWh
+    const consumo = Math.max(8, Math.min(28, consumoBase + variacion));
+    
+    // Costo basado en el consumo (tarifa simulada de $0.15/kWh)
+    const costo = consumo * 0.15;
+    
+    // Agregar variación por dispositivo específico
+    const dispositivos = ["Aire Acondicionado", "Refrigerador", "Iluminación", "Electrodomésticos", "Otros"];
+    const dispositivo = dispositivos[Math.floor(Math.random() * dispositivos.length)];
+    
+    // Notas contextuales
+    let notas = "Lectura diaria del medidor";
+    if (consumo > 20) {
+      notas = "Alto consumo - posible uso intensivo de AC";
+    } else if (consumo < 12) {
+      notas = "Bajo consumo - buen día de ahorro";
+    }
     
     datos.push({
       fecha,
       consumo: Math.round(consumo * 10) / 10,
-      costo: Math.round(consumo * 0.15 * 100) / 100 // $0.15 por kWh
+      costo: Math.round(costo * 100) / 100,
+      dispositivo,
+      notas
     });
   }
   

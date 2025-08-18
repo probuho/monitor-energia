@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { generarRecomendacion, generarDatosPrueba, ConsumoDiario, Recomendacion } from "../utils/recommendations";
 import Tutorial from "../components/Tutorial";
+import ConsumptionCharts from "../components/ConsumptionCharts";
+import DataSimulator from "../components/DataSimulator";
 
 const Dashboard: React.FC = () => {
   const { usuario, logout, isAuthenticated, loading: authLoading } = useAuth();
@@ -185,11 +187,20 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
+          {/* Simulador de Datos */}
+          <DataSimulator 
+            onDataUpdate={setConsumos}
+            consumosActuales={consumos}
+          />
+
+          {/* Gráficos Avanzados */}
+          <ConsumptionCharts consumos={consumos} />
+
           {/* Información de Sesión */}
           <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="text-sm text-gray-600 text-center">
-                Sesión iniciada como: <span className="font-medium">{usuario?.email}</span>
-              </p>
+            <p className="text-sm text-gray-600 text-center">
+              Sesión iniciada como: <span className="font-medium">{usuario?.email}</span>
+            </p>
           </div>
         </div>
       </main>
