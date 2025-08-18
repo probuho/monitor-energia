@@ -1,5 +1,9 @@
 ﻿# Monitor de Consumo Energético con Sugerencias de Ahorro
 
+Estado del Proyecto: Versión final estable (Agosto 2025)
+
+Esta es una versión final estable, apegada al caso de uso académico, que incluye simulación demostrativa de datos, análisis de consumo y recomendaciones. El sistema está listo para su evaluación y demostración.
+
 ##  **INFORMACIÓN DEL PROYECTO**
 
 **REPÚBLICA BOLIVARIANA DE VENEZUELA**  
@@ -45,6 +49,30 @@ El MVP incluye las siguientes funcionalidades esenciales:
 - Se obtiene **retroalimentación positiva** de al menos el **70%** de los usuarios que lo prueben
 
 ---
+
+##  Estado de la Entrega Final
+
+Características clave incluidas en esta versión estable:
+
+- Dashboard simplificado con métrica de consumo, costo y recomendación del sistema
+- Módulos dedicados: `Consumo`, `Análisis` e `Información`
+- Simulador de datos en tiempo real integrado al sidebar como panel expandible
+- Gráficos con Chart.js (incluye evolución temporal y comparaciones semanales)
+- Sistema de precios dual USD + VES con tasa referencial oficial (BCV)
+- Hook `useExchangeRate` para actualización de tasa y formateo de montos
+- Componente `DualPriceDisplay` para mostrar precios en USD y VES
+- Tabla de datos detallados con columna adicional de costo en VES
+- Tutoriales interactivos con Driver.js (Login, Registro, Dashboard, Consumo, Análisis)
+- Módulo `Información` sin tutorial (módulo meramente informativo)
+- Corrección de layout: eliminación de espacio en blanco lateral y autoajuste del contenido
+- UI consistente con Tailwind CSS y componentes `shadcn/ui`
+
+Rutas principales:
+
+- `/dashboard` – Resumen y recomendación del sistema
+- `/consumo` – Filtros, métricas clave, gráficos y tabla detallada
+- `/analisis` – Comparación semanal, eficiencia y patrones/insights
+- `/informacion` – Stack, estructura, enlaces y equipo del proyecto
 
 ##  **PRODUCT BACKLOG - SPRINT 1**
 
@@ -99,6 +127,9 @@ El MVP incluye las siguientes funcionalidades esenciales:
 - **Vite** - Herramienta de build rápida y moderna
 - **Tailwind CSS** - Framework CSS utility-first
 - **React Router DOM** - Enrutamiento de la aplicación
+- **shadcn/ui** - Componentes de interfaz modernos
+- **Chart.js + react-chartjs-2** - Visualización de datos
+- **Driver.js** - Tutoriales interactivos
 
 ### **Backend:**
 - **Node.js** - Runtime de JavaScript
@@ -139,6 +170,17 @@ El MVP incluye las siguientes funcionalidades esenciales:
 - **Métricas de consumo** (total, costo, promedio)
 - **Gráfico de tendencias** visual e interactivo
 - **Alertas inteligentes** con iconos y mensajes
+
+### **Módulos y Componentes Clave:**
+- **Simulador en Sidebar**: control de inicio/pausa, estadísticas en tiempo real y estilo distintivo
+- **Consumo**: métricas, filtros avanzados, exportación CSV, gráficos (incluye distribución por dispositivo)
+- **Análisis**: comparación semanal, eficiencia, patrones/insights y evolución temporal
+- **Información**: stack, estructura, enlaces a GitHub y tarjetas del equipo (sin tutorial)
+
+### **Monedas y Tasas de Cambio:**
+- Hook `useExchangeRate` con fuente referencial oficial (BCV)
+- Componente `DualPriceDisplay` para mostrar USD y VES en todas las vistas relevantes
+- Conversión aplicada a métricas, tarjetas y tabla de datos
 
 ---
 

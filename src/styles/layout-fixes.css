@@ -1,0 +1,60 @@
+/* Fixes para problemas de layout y expansión de contenido */
+
+/* Asegurar que el contenido principal ocupe todo el ancho disponible */
+.dashboard-main-content {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+/* Forzar expansión completa del contenedor principal */
+.dashboard-content-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+/* Asegurar que las páginas se expandan completamente */
+.page-content {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+}
+
+/* Fix para el problema de espacio en blanco a la derecha */
+.dashboard-layout {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Asegurar que el sidebar no interfiera con el contenido principal */
+.dashboard-sidebar {
+  flex-shrink: 0 !important;
+  width: auto !important;
+}
+
+/* Forzar que el contenido principal ocupe todo el espacio restante */
+.dashboard-main {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+}
+
+/* Estilos para las tarjetas del equipo */
+.team-member-card {
+  transition: all 0.3s ease;
+  border: 1px solid hsl(var(--border));
+}
+
+.team-member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.team-member-card .team-member-card:hover {
+  border-color: hsl(var(--primary));
+}

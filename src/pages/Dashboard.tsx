@@ -1,10 +1,10 @@
 ﻿import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { generarRecomendacion, generarDatosPrueba, ConsumoDiario, Recomendacion } from "../utils/recommendations";
-import Tutorial from "../components/Tutorial";
-import ConsumptionCharts from "../components/ConsumptionCharts";
-import DataSimulator from "../components/DataSimulator";
+import { useAuth } from "@/contexts/AuthContext";
+import { generarRecomendacion, generarDatosPrueba, ConsumoDiario, Recomendacion } from "@/utils/recommendations";
+import Tutorial from "@/components/Tutorial";
+import ConsumptionCharts from "@/components/ConsumptionCharts";
+import DataSimulatorPanel from "@/components/dashboard/DataSimulatorPanel";
 
 const Dashboard: React.FC = () => {
   const { usuario, logout, isAuthenticated, loading: authLoading } = useAuth();
@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Simulador de Datos */}
-          <DataSimulator 
+          <DataSimulatorPanel 
             onDataUpdate={setConsumos}
             consumosActuales={consumos}
           />

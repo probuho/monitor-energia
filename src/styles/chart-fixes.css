@@ -1,0 +1,41 @@
+/* Fixes para Chart.js y compatibilidad de navegadores */
+
+/* Suprimir advertencias de propiedades no estándar */
+.chart-container {
+  /* Propiedades específicas para Chart.js */
+  contain: layout style paint;
+}
+
+/* Fallbacks para navegadores que no soportan :has */
+@supports not (selector(:has(*))) {
+  /* Alternativas para navegadores antiguos */
+  .sidebar-wrapper {
+    /* Fallback para layout sin :has */
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+}
+
+/* Correcciones para propiedades CSS problemáticas */
+.chart-tooltip {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.chart-container {
+  height: auto;
+  min-height: 300px;
+}
+
+/* Mejoras de rendimiento para gráficos */
+canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Suprimir warnings de zoom (propiedad no estándar pero funcional) */
+.chart-zoom {
+  zoom: 1; /* Fallback para navegadores que lo soportan */
+  transform: scale(1); /* Alternativa moderna */
+}

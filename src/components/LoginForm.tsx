@@ -1,10 +1,11 @@
 ﻿import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import Tutorial from "./Tutorial";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
@@ -24,7 +25,9 @@ const LoginForm: React.FC = () => {
       const success = await login(formData.email, formData.password);
       
       if (success) {
-        navigate("/dashboard");
+        // Redirigir a la página original o al dashboard por defecto
+        const from = (location.state as any)?.from?.pathname || "/dashboard";
+        navigate(from, { replace: true });
       } else {
         setError("Credenciales inválidas");
       }

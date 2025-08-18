@@ -3,6 +3,8 @@ export interface ConsumoDiario {
   fecha: Date;
   consumo: number; // en kWh
   costo?: number; // en pesos
+  dispositivo?: string; // tipo de dispositivo o categoría
+  notas?: string; // notas adicionales sobre el consumo
 }
 
 export interface Recomendacion {

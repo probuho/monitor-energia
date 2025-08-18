@@ -205,8 +205,8 @@ const DataSimulator: React.FC<DataSimulatorProps> = ({ onDataUpdate, consumosAct
         </div>
         
         <div className="text-xs text-gray-500 text-center">
-          💡 <strong>Para tu presentación:</strong> Usa este simulador para mostrar cómo el sistema 
-          actualiza los gráficos y recomendaciones en tiempo real
+          💡 <strong>Powered by Chart.js:</strong> Gráficos interactivos y responsivos que se actualizan 
+          en tiempo real con los datos simulados
         </div>
       </div>
     </div>

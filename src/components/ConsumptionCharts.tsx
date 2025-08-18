@@ -10,9 +10,11 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  Filler,
 } from 'chart.js';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import { ConsumoDiario } from '../utils/recommendations';
+import '../styles/chart-fixes.css';
 
 // Registrar los componentes de Chart.js
 ChartJS.register(
@@ -24,7 +26,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  Filler
 );
 
 interface ConsumptionChartsProps {
@@ -141,10 +144,10 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
         labels: {
           usePointStyle: true,
           padding: 20,
-          font: {
-            size: 12,
-            weight: '600'
-          }
+                     font: {
+             size: 12,
+             weight: 600
+           }
         }
       },
       tooltip: {
@@ -172,7 +175,7 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
           display: true,
           text: 'Consumo (kWh)',
           color: '#6b7280',
-          font: { size: 12, weight: '600' }
+          font: { size: 12, weight: 600 }
         },
         grid: {
           color: 'rgba(156, 163, 175, 0.2)',
@@ -191,7 +194,7 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
           display: true,
           text: 'Costo ($)',
           color: '#6b7280',
-          font: { size: 12, weight: '600' }
+          font: { size: 12, weight: 600 }
         },
         grid: {
           drawOnChartArea: false,
@@ -206,7 +209,7 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
           display: true,
           text: 'Fecha',
           color: '#6b7280',
-          font: { size: 12, weight: '600' }
+          font: { size: 12, weight: 600 }
         },
         grid: {
           color: 'rgba(156, 163, 175, 0.2)',
@@ -229,7 +232,7 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
           display: true,
           text: 'Consumo (kWh)',
           color: '#6b7280',
-          font: { size: 12, weight: '600' }
+          font: { size: 12, weight: 600 }
         },
         grid: {
           color: 'rgba(156, 163, 175, 0.2)',
@@ -245,7 +248,7 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
           display: true,
           text: 'Día de la Semana',
           color: '#6b7280',
-          font: { size: 12, weight: '600' }
+          font: { size: 12, weight: 600 }
         },
         grid: {
           display: false,
@@ -268,7 +271,7 @@ const ConsumptionCharts: React.FC<ConsumptionChartsProps> = ({ consumos }) => {
         labels: {
           usePointStyle: true,
           padding: 20,
-          font: { size: 11, weight: '500' }
+          font: { size: 11, weight: 500 }
         }
       }
     }
