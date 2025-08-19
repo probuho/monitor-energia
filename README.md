@@ -10,7 +10,7 @@ Esta es una versión final estable, apegada al caso de uso académico, que inclu
 **UNIVERSIDAD NACIONAL EXPERIMENTAL PARA LAS TELECOMUNICACIONES E INFORMÁTICA**  
 **VICERRECTORADO ACADÉMICO**  
 **PROGRAMA NACIONAL DE FORMACIÓN EN INGENIERÍA EN INFORMÁTICA**  
-**U.C.: Proyecto Socio Integrador III  BootCamp**
+**U.C.: Proyecto Socio Tecnologico III Modulo 2   BootCamp**
 
 ---
 
@@ -22,8 +22,8 @@ Esta es una versión final estable, apegada al caso de uso académico, que inclu
 | **Alumno** | Enmanuela Gutiérrez |
 | **Alumno** | Antonio Ruiz |
 
-**Versión:** 1.0  
-**Fecha:** Agosto 2025  
+**Versión:** Estable  
+**Fecha:** 16/ Agosto / 2025  
 **Caracas, Venezuela**
 
 ---
@@ -257,7 +257,7 @@ monitor-energia/
 
 ##  **CONTRIBUCIÓN**
 
-Este proyecto fue desarrollado como parte del **Proyecto Socio Integrador III** en la **Universidad Nacional Experimental para las Telecomunicaciones e Informática**.
+Este proyecto fue desarrollado como parte del **Proyecto Socio Tecnologico III Modulo 2** en la **Universidad Nacional Experimental para las Telecomunicaciones e Informática**.
 
 ### **Equipo de Desarrollo:**
 - **Enmanuela Gutiérrez** - Desarrollo Frontend y Backend
@@ -277,4 +277,4 @@ Este proyecto es propiedad de la **Universidad Nacional Experimental para las Te
 Para más información sobre este proyecto, contactar a:
 - **Docente Asesora:** Carol Armao
 - **Universidad:** UNETI
-- **Programa:** Ingeniería en Informática
+- **Programa:** PNF de Ingeniería en Informática
