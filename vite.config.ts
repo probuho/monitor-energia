@@ -22,4 +22,17 @@ export default defineConfig({
     "process.env": {},
     global: "globalThis",
   },
+  // Configuración para Vercel
+  build: {
+    outDir: "dist",
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-label'],
+        },
+      },
+    },
+  },
 });
