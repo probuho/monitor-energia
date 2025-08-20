@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: monitor-energia-backend
+    env: node
+    plan: free
+    buildCommand: cd . && npm install -g npm@latest && npm install --prefix . && npm run build:server
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://probuho:caracas123@cluster0.rhalndk.mongodb.net/monitor-energia?retryWrites=true&w=majority
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
