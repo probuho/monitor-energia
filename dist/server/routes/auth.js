@@ -1,12 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const Usuario_1 = require("../models/Usuario");
-const router = express_1.default.Router();
+import express from "express";
+import bcrypt from "bcryptjs";
+import { Usuario } from "../models/Usuario";
+const router = express.Router();
 // Ruta para registrar un nuevo usuario
 router.post("/registro", async (req, res) => {
     try {
@@ -19,7 +14,7 @@ router.post("/registro", async (req, res) => {
             });
         }
         // Verificar si el usuario ya existe
-        const usuarioExistente = await Usuario_1.Usuario.findOne({ email });
+        const usuarioExistente = await Usuario.findOne({ email });
         if (usuarioExistente) {
             return res.status(400).json({
                 success: false,
@@ -28,9 +23,9 @@ router.post("/registro", async (req, res) => {
         }
         // Hashear la contraseña
         const saltRounds = 12;
-        const passwordHasheada = await bcryptjs_1.default.hash(password, saltRounds);
+        const passwordHasheada = await bcrypt.hash(password, saltRounds);
         // Crear el nuevo usuario
-        const nuevoUsuario = new Usuario_1.Usuario({
+        const nuevoUsuario = new Usuario({
             nombre,
             email,
             password: passwordHasheada,
@@ -65,7 +60,7 @@ router.post("/login", async (req, res) => {
             });
         }
         // Buscar usuario por email
-        const usuario = await Usuario_1.Usuario.findOne({ email });
+        const usuario = await Usuario.findOne({ email });
         if (!usuario) {
             return res.status(401).json({
                 success: false,
@@ -73,7 +68,7 @@ router.post("/login", async (req, res) => {
             });
         }
         // Verificar contraseña
-        const passwordValida = await bcryptjs_1.default.compare(password, usuario.password);
+        const passwordValida = await bcrypt.compare(password, usuario.password);
         if (!passwordValida) {
             return res.status(401).json({
                 success: false,
@@ -111,7 +106,7 @@ router.get("/perfil", async (req, res) => {
                 message: "Email requerido",
             });
         }
-        const usuario = await Usuario_1.Usuario.findOne({ email }).select("-password");
+        const usuario = await Usuario.findOne({ email }).select("-password");
         if (!usuario) {
             return res.status(404).json({
                 success: false,
@@ -173,4 +168,4 @@ router.get("/error", async (req, res) => {
         res.status(500).json({ error: "Error interno del servidor" });
     }
 });
-exports.default = router;
+export default router;

@@ -1,11 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const Consumo_1 = require("../models/Consumo");
-const router = express_1.default.Router();
+import express from "express";
+import { Consumo } from "../models/Consumo";
+const router = express.Router();
 // Obtener consumo del usuario
 router.get("/usuario/:usuarioId", async (req, res) => {
     try {
@@ -13,7 +8,7 @@ router.get("/usuario/:usuarioId", async (req, res) => {
         const { dias = 14 } = req.query;
         const fechaLimite = new Date();
         fechaLimite.setDate(fechaLimite.getDate() - Number(dias));
-        const consumos = await Consumo_1.Consumo.find({
+        const consumos = await Consumo.find({
             usuarioId,
             fecha: { $gte: fechaLimite }
         })
@@ -43,7 +38,7 @@ router.post("/", async (req, res) => {
                 message: "Usuario, consumo y costo son obligatorios"
             });
         }
-        const nuevoConsumo = new Consumo_1.Consumo({
+        const nuevoConsumo = new Consumo({
             usuarioId,
             consumo: Number(consumo),
             costo: Number(costo),
@@ -65,4 +60,4 @@ router.post("/", async (req, res) => {
         });
     }
 });
-exports.default = router;
+export default router;
