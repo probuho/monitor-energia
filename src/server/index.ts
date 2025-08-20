@@ -1,33 +1,41 @@
 ﻿import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
-import authRoutes from "./routes/auth";
-import consumoRoutes from "./routes/consumo";
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/monitor-energia")
-  .then(() => {
-    console.log(" Conectado a MongoDB");
-  })
-  .catch((error) => {
-    console.error(" Error conectando a MongoDB:", error);
+// Ruta de salud
+app.get("/", (_, res) => {
+  res.json({ 
+    message: "Monitor de Energía - Backend funcionando correctamente",
+    timestamp: new Date().toISOString(),
+    port: PORT
   });
-
-app.use("/api/auth", authRoutes);
-app.use("/api/consumo", consumoRoutes);
+});
 
 app.get("/api/health", (_, res) => {
-  res.json({ message: "Servidor funcionando correctamente" });
+  res.json({ 
+    message: "Servidor funcionando correctamente",
+    status: "OK",
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Ruta de prueba
+app.get("/api/test", (_, res) => {
+  res.json({ 
+    message: "API funcionando",
+    data: "Test exitoso"
+  });
 });
 
 app.listen(PORT, () => {
-  console.log(` Servidor corriendo en puerto ${PORT}`);
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+  console.log(`📡 Health check: http://localhost:${PORT}/api/health`);
 });
